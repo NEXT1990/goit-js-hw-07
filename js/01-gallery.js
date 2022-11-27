@@ -30,16 +30,39 @@ function createImageCardsMarkup(galleryItems) {
 function onGalleryContainerClick(event) {
   event.preventDefault();
   const targetImageEl = event.target.classList.contains("gallery__image");
-
   if (!targetImageEl) {
     return;
   }
 
-  const instance = basicLightbox.create(`
-    <div class="modal">
-        <img src="${event.target.dataset.source}">
-    </div>
-`);
+  // const instance = basicLightbox.create(
+  //   `
+  //     <div class="modal">
+  //         <img src="${event.target.dataset.source}">
+  //     </div>
+  // `,
+  //   {
+  //     OnShow: (instance) =>
+  //       document.addEventListener("keydown", closeModalOnPressEscape),
+  //     OnClose: (instance) =>
+  //       document.removeEventListener("keydown", closeModalOnPressEscape),
+  //   }
+  // );
+
+  // instance.show();
+
+  // function closeModalOnPressEscape(event) {
+  //   if (event.code === "Escape") {
+  //     instance.close();
+  //   }
+  // }
+
+  const instance = basicLightbox.create(
+    `
+      <div class="modal">
+          <img src="${event.target.dataset.source}">
+      </div>
+  `
+  );
 
   instance.show();
 
